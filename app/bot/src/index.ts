@@ -29,6 +29,7 @@ server.post(
   async (req, res) => {
     // By default this function will iterate all the installation points and send an Adaptive Card
     // to every installation.
+    // FOR SEND NOTIFICATION NEED RUN IN BASH: curl -X POST -s --data '{"one" : "one/text","two" : "two/text"}', http://127.0.0.1:3978/api/notification
     for (const target of await bot.notification.installations()) {
       await target.sendAdaptiveCard(
         AdaptiveCards.declare<CardData>(notificationTemplate).render({
